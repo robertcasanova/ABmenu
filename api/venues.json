@@ -1,0 +1,19 @@
+{
+    "venues": [
+        {
+            "name": "Roiter",
+            "geoLocationLat": 100,
+            "geoLocationLon": 100
+        },
+        {
+            "name": "Pino",
+            "geoLocationLat": 100,
+            "geoLocationLon": 100
+        },
+        {
+            "name": "Locanda",
+            "geoLocationLat": 100,
+            "geoLocationLon": 100
+        }
+    ]
+}
