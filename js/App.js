@@ -8,7 +8,7 @@
 		  routes: {
 		    "login": "login",
 		    "logout" : "logout",
-		    "venues": "venues"    // #/login
+		    "venues": "venues"    
 		  },
 
 		  login: function() {
@@ -18,21 +18,14 @@
 		  	new ABmenu.View.logout();
 		  },
 		  venues: function() {
-		  	var venues = new ABmenu.Collection.venues();
 
-		  	var view = new ABmenu.View.venues({'collection': venues });
-
-		  	venues.fetch({success: function(collection,response) {
-		  		view.render(response);
-		  	}, error: function(){alert('error')}});
-		  	
+			this.venues = new ABmenu.Collection.venues();
+			this.venues_view = new ABmenu.View.venues({model: this.venues});
+		  	this.venues.fetch();
+		  	$('.main').html(this.venues_view.render().el);
 			
 
 		  	
-		  },
-
-		  search: function(query, page) {
-
 		  }
 
 	});
@@ -64,30 +57,40 @@
 
 	})
 	ABmenu.View.venues = Backbone.View.extend({
-		el:$('.main'),
+		tagName: 'ul',
+		template: _.template($('#tmpl-venues').html()),
 		initialize: function(){
-			this.template = _.template($('#tmpl-venues').html());
+			this.model.bind("reset", this.render, this);
 		},
-		render: function(response) {
-			$(this.el).html(this.template(response));
-			//$(this.el).html(this.template(this.collection.toJSON()));
+		render: function() {
+			_.each(this.model.models,function(venue){
+				$(this.el).append(new ABmenu.View.venue({model: venue}).render().el)
+			},this);
     		return this;
 		}
 	});
+	ABmenu.View.venue = Backbone.View.extend({
+		tagName: 'li',
+		template: _.template($('#tmpl-venue').html()),
+		render: function() {
+			$(this.el).html(this.template(this.model.toJSON()));
+			return this;
+		}
+	})
 
 
 	/* MODEL */
 
 	ABmenu.Model.venue = Backbone.Model.extend({
 		defaults: {
-			'name': 'emptyName'
+			'name': 'emptyName',
+			'geoLocationLat' :0 ,
+			'geoLocationLon' :0
 		}
 	})
 	ABmenu.Collection.venues = Backbone.Collection.extend({
-		model: ABmenu.venue,
-		url: '/api/venues.json',
-		parse: function(response){
-		}
+		model: ABmenu.Model.venue,
+		url: 'api/venues.json'
 	})
 
 

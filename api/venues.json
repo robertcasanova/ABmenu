@@ -1,5 +1,4 @@
-{
-    "venues": [
+[
         {
             "name": "Roiter",
             "geoLocationLat": 100,
@@ -15,5 +14,4 @@
             "geoLocationLat": 100,
             "geoLocationLon": 100
         }
-    ]
-}
+]
