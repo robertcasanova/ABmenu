@@ -23,8 +23,6 @@
 			this.venues_view = new ABmenu.View.venues({model: this.venues});
 		  	this.venues.fetch();
 		  	$('.main').html(this.venues_view.render().el);
-			
-
 		  	
 		  }
 
@@ -63,9 +61,11 @@
 			this.model.bind("reset", this.render, this);
 		},
 		render: function() {
+			var $cached = $('ul');
 			_.each(this.model.models,function(venue){
-				$(this.el).append(new ABmenu.View.venue({model: venue}).render().el)
+				$cached.append(new ABmenu.View.venue({model: venue}).render().el)
 			},this);
+			$(this.el).append($cached)
     		return this;
 		}
 	});
@@ -101,6 +101,6 @@
 
 	})		
 
-})(jQuery)
+})(Zepto)
 
 

@@ -53,7 +53,7 @@
       
   </script>
   <script type="text/html" id="tmpl-venue">
-      <li><%= name %></li>
+      <li><%= name %> <%= geoLocationLon %></li>
   </script>
   
 
@@ -61,10 +61,9 @@
   <!-- JavaScript at the bottom for fast page loading: http://developer.yahoo.com/performance/rules.html#js_bottom -->
 
   <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if offline -->
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-  <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.7.2.min.js"><\/script>')</script>
-  <script src="http://documentcloud.github.com/underscore/underscore-min.js"></script>
-  <script src="http://documentcloud.github.com/backbone/backbone-min.js"></script>
+  <script src="js/vendor/zepto.min.js"></script>
+  <script src="js/vendor/underscore.min.js"></script>
+  <script src="js/vendor/backbone.min.js"></script>
 
   <!-- scripts concatenated and minified via build script -->
   <script src="js/plugins.js"></script>
