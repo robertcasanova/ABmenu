@@ -1,32 +1,31 @@
 [
         {
             "id":0,
-            "name": "Roiter",
+            "name": "A",
             "geoLocationLat": 100,
             "geoLocationLon": 100
         },
         {
             "id":1,
-            "name": "Pino",
+            "name": "B",
             "geoLocationLat": 100,
             "geoLocationLon": 100
         },
         {
             "id":2,
-            "name": "Locanda",
+            "name": "C",
             "geoLocationLat": 100,
             "geoLocationLon": 100
         },
         {
             "id":3,
-            "name": "Locanda",
+            "name": "D",
             "geoLocationLat": 100,
             "geoLocationLon": 100
         },
         {
             "id":4,
-            "name": "Mio Zio",
-            "name": "Mio Zio",
+            "name": "E",
             "geoLocationLat": 100,
             "geoLocationLon": 100
         }

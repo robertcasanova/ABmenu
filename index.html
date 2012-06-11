@@ -35,7 +35,7 @@
   <header>
       <a href="#/login" title="">Login</a>
       <a href="#/logout" title="">Logout</a>
-      <a href="#/venues" title="">Logout</a>
+      <a href="#/ristoranti" title="">Ristoranti</a>
   </header>
   <div class="main">
   </div>
@@ -47,13 +47,18 @@
         <input type="submit" />  
       </form>
   </script>
+  <script type="text/html" id="tmpl-logout">
+      <h1>Logout Page</h1>
+  </script>
 
-  <script type="text/html" id="tmpl-venues">
-      <h1>Venues</h1>
+  <script type="text/html" id="tmpl-ristoranti">
+      <h1>Ristoranti</h1>
+      <div class="list"></div>
+      <a href="api/foursquare.json" class="load-foursquare">Carica da Foursquare</a>
       
   </script>
   <script type="text/html" id="tmpl-venue">
-      <li><%= name %> <%= geoLocationLon %></li>
+      <li data-id="<%= id %>"><%= name %> <%= geoLocationLon %></li>
   </script>
   
 
