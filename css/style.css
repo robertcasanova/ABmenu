@@ -215,11 +215,76 @@ td { vertical-align: top; }
 
 
 /* ==|== primary styles =====================================================
-   Author:
+   Author: Robert Casanova
    ========================================================================== */
+body {
+  width:100%;
+  height:100%;
+  position:absolute;
+  top:0;
+  left:0;
+  overflow:hidden;
+}
+header {
+  position: absolute;
+  top:0;
+  left:0;
+  z-index:2;
+  background: #999;
+  color: #fff;
+}
 
+#main {
+  width:300%;
+  height: 200%;
+  position:absolute;
+  top:0;
+  left:0;
+  -webkit-transition: all 1s ease-in-out;
+  -moz-transition: all 1s ease-in-out;
+  -o-transition: all 1s ease-in-out;
+  -ms-transition: all 1s ease-in-out;
+  background: #000;
+}
+#main.goToLogin {
+  -webkit-transform: translate(0,0);
+  -moz-transform: translate(0,0);
+  -o-transform: translate(0,0);
+  -ms-transform: translate(0,0);
+}
+#main.goToLogout {
+  -webkit-transform: translate(-33.33333333%,0);
+  -moz-transform: translate(-33.33333333%,0);
+  -o-transform: translate(-33.33333333%,0);
+  -ms-transform: translate(-33.33333333%,0);
+}
+#main.goToRestaurants {
+  -webkit-transform: translate(-33.33333333%,-50%);
+  -moz-transform: translate(-33.33333333%,-50%);
+  -o-transform: translate(-33.33333333%,-50%);
+  -ms-transform: translate(-33.33333333%,-50%);
+}
+section.page {
+  width: 33.3333333%;
+  height: 50%;
+  position:absolute;
+}
 
-
+section.login {
+  left:0;
+  top:0;
+  background: orange;
+}
+section.logout {
+  left:33.33333333%;
+  top:0;
+  background: yellow;
+}
+section.restaurants {
+  left:33.333333333%;
+  top:50%;
+  background: red;
+}
 
 
 

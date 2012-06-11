@@ -15,6 +15,7 @@
 
 	ABmenu.Router.mainRoute = Backbone.Router.extend({
 		  routes: {
+		  	"":"login",
 		    "login": "login",
 		    "logout" : "logout",
 		    "ristoranti": "ristoranti",
@@ -25,22 +26,21 @@
 		  	this.login  = new ABmenu.View.login();
 		  	this.logout = new ABmenu.View.logout();
 		  	this.ristoranti = new ABmenu.View.ristoranti();
-		  	//
 		  },
 
 		  login: function() {
-
-		  	$('.main').html(this.login.render().el);
+		  	$('#main').removeClass().addClass('goToLogin');
+		  	$('#main .login').html(this.login.render().el);
 
 		  },
 		  logout: function() {
-
-		  	$('.main').html(this.logout.render().el);
+		  	$('#main').removeClass().addClass('goToLogout');
+		  	$('#main .logout').html(this.logout.render().el);
 
 		  },
 		  ristoranti: function() {
-
-			$('.main').html(this.ristoranti.render().el);
+		  	$('#main').removeClass().addClass('goToRestaurants');
+			$('#main .restaurants').html(this.ristoranti.render().el);
 		  			  	
 		  }
 
@@ -49,7 +49,7 @@
 	/* VIEWS */
 	ABmenu.View.login = Backbone.View.extend({
 		tagName: 'div',
-		className: 'login',
+		className: 'login_view',
 		template: _.template($('#tmpl-login').html()),
 		initialize: function(){
 
@@ -65,20 +65,21 @@
 	})
 	ABmenu.View.logout = Backbone.View.extend({
 		tagName: 'div',
-		className: 'logout',
+		className: 'logout_view',
 		template: _.template($('#tmpl-logout').html()),
 		initialize: function(){
 
 		},
 		render: function() {
 			this.$el.html(this.template());
+			log(this.$el);
     		return this;
 		}
 
 	})
 	ABmenu.View.ristoranti = Backbone.View.extend({
 		tagName: 'div',
-		className: 'ristoranti',
+		className: 'ristoranti_view',
 		events: {
 			'click .load-foursquare' : 'loadFoursquare',
 			'click .venues li' : 'changeTitle'
