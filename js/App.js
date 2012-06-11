@@ -20,10 +20,8 @@
 		  venues: function() {
 
 			this.venues = new ABmenu.Collection.venues();
-			this.venues_view = new ABmenu.View.venues({model: this.venues});
-		  	this.venues.fetch();
-		  	$('.main').html(this.venues_view.render().el);
-		  	
+			this.venues_view = new ABmenu.View.venues({collection: this.venues});
+		  			  	
 		  }
 
 	});
@@ -49,23 +47,24 @@
 			this.render();
 		},
 		render: function() {
-			$(this.el).html("<h1>Logout</h1>");
+			this.$el.html("<h1>Logout</h1>");
     		return this;
 		}
 
 	})
 	ABmenu.View.venues = Backbone.View.extend({
-		tagName: 'ul',
-		template: _.template($('#tmpl-venues').html()),
+		el: $('.main'),
 		initialize: function(){
-			this.model.bind("reset", this.render, this);
+			var that = this;
+			this.collection.fetch();
+			this.collection.on("reset", this.render, this);
 		},
-		render: function() {
-			var $cached = $('ul');
-			_.each(this.model.models,function(venue){
-				$cached.append(new ABmenu.View.venue({model: venue}).render().el)
+		render: function(collection) {
+			var $cached = $('<ul>');
+			_.each(collection.models,function(venue){
+				$cached.append(new ABmenu.View.venue({model: venue}).render().el);
 			},this);
-			$(this.el).append($cached)
+			this.$el.html($cached);
     		return this;
 		}
 	});
@@ -73,7 +72,7 @@
 		tagName: 'li',
 		template: _.template($('#tmpl-venue').html()),
 		render: function() {
-			$(this.el).html(this.template(this.model.toJSON()));
+			this.$el.html(this.template(this.model.toJSON()));
 			return this;
 		}
 	})
